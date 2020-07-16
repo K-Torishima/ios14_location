@@ -15,6 +15,7 @@
 		1696AF4724C06F1D002BE0DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1696AF4524C06F1D002BE0DE /* LaunchScreen.storyboard */; };
 		1696AF5224C06F1D002BE0DE /* ios14_locationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696AF5124C06F1D002BE0DE /* ios14_locationTests.swift */; };
 		1696AF5D24C06F1D002BE0DE /* ios14_locationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696AF5C24C06F1D002BE0DE /* ios14_locationUITests.swift */; };
+		1696AF6B24C07509002BE0DE /* PreViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1696AF6A24C07509002BE0DE /* PreViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1696AF5824C06F1D002BE0DE /* ios14_locationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ios14_locationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1696AF5C24C06F1D002BE0DE /* ios14_locationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ios14_locationUITests.swift; sourceTree = "<group>"; };
 		1696AF5E24C06F1D002BE0DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1696AF6A24C07509002BE0DE /* PreViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				1696AF3A24C06F1C002BE0DE /* AppDelegate.swift */,
 				1696AF3C24C06F1C002BE0DE /* SceneDelegate.swift */,
 				1696AF3E24C06F1C002BE0DE /* ViewController.swift */,
+				1696AF6A24C07509002BE0DE /* PreViews.swift */,
 				1696AF4024C06F1C002BE0DE /* Main.storyboard */,
 				1696AF4324C06F1D002BE0DE /* Assets.xcassets */,
 				1696AF4524C06F1D002BE0DE /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				1696AF3F24C06F1C002BE0DE /* ViewController.swift in Sources */,
 				1696AF3B24C06F1C002BE0DE /* AppDelegate.swift in Sources */,
+				1696AF6B24C07509002BE0DE /* PreViews.swift in Sources */,
 				1696AF3D24C06F1C002BE0DE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
