@@ -64,5 +64,7 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>位置情報を許可しますか？</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
 </dict>
 </plist>

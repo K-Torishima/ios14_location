@@ -26,6 +26,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         locManager = CLLocationManager()
         locManager.delegate = self
+        locManager.startUpdatingLocation()
         
         mapView.center = view.center
         view.addSubview(mapView)
@@ -76,6 +77,18 @@ extension ViewController: CLLocationManagerDelegate {
             print("曖昧lat: " + latStr)
         default:
             break
+            
+        }
+       
+        for location in locations {
+            let center = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+            let span = MKCoordinateSpan()
+            let region = MKCoordinateRegion(center: center, span: span)
+            mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+            mapView.addAnnotation(annotation)
             
         }
     }
