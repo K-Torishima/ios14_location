@@ -63,8 +63,6 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>位置情報を許可しますか？</string>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<true/>
+	<string>正確な位置情報を許可しますか？取得しない場合反映されません</string>
 </dict>
 </plist>

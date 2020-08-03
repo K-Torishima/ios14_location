@@ -11,31 +11,39 @@ import CoreLocation
 
 class ViewController: UIViewController, MKMapViewDelegate {
     
+    @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var keido: UILabel!
+    @IBOutlet weak var edo: UILabel!
+    
     var locManager: CLLocationManager!
-
-    lazy var mapView: MKMapView = {
-        let mapView = MKMapView()
-        mapView.frame = CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: view.frame.size.height)
-        mapView.mapType = MKMapType.standard
-        mapView.isZoomEnabled = true
-        mapView.isScrollEnabled = true
-        return mapView
-    }()
-
+    
+    //    lazy var mapView: MKMapView = {
+    //        let mapView = MKMapView()
+    //        mapView.frame = CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: view.frame.size.height - 10 )
+    //        mapView.mapType = MKMapType.standard
+    //        mapView.isZoomEnabled = true
+    //        mapView.isScrollEnabled = true
+    //        return mapView
+    //    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locManager = CLLocationManager()
         locManager.delegate = self
         locManager.startUpdatingLocation()
+        mapView.mapType = MKMapType.standard
+        mapView.isZoomEnabled = true
+        mapView.isScrollEnabled = true
         
-        mapView.center = view.center
-        view.addSubview(mapView)
+        //        mapView.center = view.center
+        //        view.addSubview(mapView)
         getLocation()
     }
     
     func getLocation() {
         locManager.requestWhenInUseAuthorization()
-
+        
         if CLLocationManager.locationServicesEnabled() {
             
             switch locManager.authorizationStatus() {
@@ -52,7 +60,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
                 // 最初の一回だけ
                 print("正確な位置情報を許可")
             case .reducedAccuracy:
-                // ここでアラート出して伝えた方が良さそう。
                 // 一回正確な許可をされない場合ずっと正確ではない。
                 print("正確な位置情報でない")
             default:
@@ -70,6 +77,8 @@ extension ViewController: CLLocationManagerDelegate {
         let latStr = (locations.last?.coordinate.latitude.description)!
         switch locManager.accuracyAuthorization {
         case .fullAccuracy:
+            keido.text = lonStr
+            edo.text = latStr
             print("正確lon: " + lonStr)
             print("正確lat: " + latStr)
         case .reducedAccuracy:
@@ -79,7 +88,7 @@ extension ViewController: CLLocationManagerDelegate {
             break
             
         }
-       
+        
         for location in locations {
             let center = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
             let span = MKCoordinateSpan()
@@ -95,15 +104,15 @@ extension ViewController: CLLocationManagerDelegate {
 }
 
 
-#if DEBUG
-import SwiftUI
-
-struct VCPreview: PreviewProvider {
-    static var previews: some View {
-        ViewController()
-            .toPreview()
-            .previewDevice("iPhone 11 Pro Max")
-    }
-}
-
-#endif
+//#if DEBUG
+//import SwiftUI
+//
+//struct VCPreview: PreviewProvider {
+//    static var previews: some View {
+//        ViewController()
+//            .toPreview()
+//            .previewDevice("iPhone 11 Pro Max")
+//    }
+//}
+//
+//#endif

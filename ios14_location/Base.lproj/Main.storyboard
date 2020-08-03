@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17132" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17105"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,9 +15,44 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZeF-zc-PHW">
+                                <rect key="frame" x="0.0" y="228" width="414" height="440"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44A-cy-RxQ">
+                                <rect key="frame" x="94" y="706" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILB-iJ-mmk">
+                                <rect key="frame" x="94" y="751" width="216" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="44A-cy-RxQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="2Mq-Hz-kUc"/>
+                            <constraint firstItem="ZeF-zc-PHW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="184" id="6PC-rW-uU6"/>
+                            <constraint firstItem="ZeF-zc-PHW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DyK-yi-L8e"/>
+                            <constraint firstItem="44A-cy-RxQ" firstAttribute="top" secondItem="ZeF-zc-PHW" secondAttribute="bottom" constant="38" id="KCH-b8-Rdl"/>
+                            <constraint firstItem="44A-cy-RxQ" firstAttribute="top" secondItem="ZeF-zc-PHW" secondAttribute="bottom" constant="38" id="KbE-h5-reK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ILB-iJ-mmk" secondAttribute="bottom" constant="90" id="PG6-Ob-cAe"/>
+                            <constraint firstItem="ILB-iJ-mmk" firstAttribute="top" secondItem="44A-cy-RxQ" secondAttribute="bottom" constant="24" id="Tyw-hC-AKA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="44A-cy-RxQ" secondAttribute="trailing" constant="104" id="W3Z-dt-rLh"/>
+                            <constraint firstItem="ILB-iJ-mmk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="94" id="aQS-3T-HAw"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ILB-iJ-mmk" secondAttribute="trailing" constant="104" id="gDe-4a-nUL"/>
+                            <constraint firstItem="ZeF-zc-PHW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qIl-eE-KzT"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="edo" destination="ILB-iJ-mmk" id="fjV-XZ-dnk"/>
+                        <outlet property="keido" destination="44A-cy-RxQ" id="SKp-Gv-Pvh"/>
+                        <outlet property="mapView" destination="ZeF-zc-PHW" id="qEb-z5-ShX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
