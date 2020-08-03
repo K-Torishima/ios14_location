@@ -1,0 +1,2 @@
+# ios14_location
+iOS１４から変更されるLocation設定に関してのSample
