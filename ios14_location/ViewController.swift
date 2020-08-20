@@ -23,14 +23,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         setUpLocationM()
     }
-    
+
     @IBAction func getLocation(_ sender: Any) {
-        let status = CLLocationManager.authorizationStatus()
-        if status == .denied {
-            alert()
-        } else if status == .authorizedWhenInUse {
-            keido.text = keidoNow
-            edo.text = edoNow
+        let status = locManager.authorizationStatus()
+        let manager = locManager.accuracyAuthorization
+        switch status {
+        case .authorizedAlways,.authorizedWhenInUse:
+            print("許可した")
+        case .notDetermined, .denied, .restricted:
+            print("許可しない")
+        default:
+            print("Unhandled case")
+        }
+        
+        switch manager {
+        case .fullAccuracy:
+            edo.text = "正確な緯度: \(edoNow)"
+            keido.text = "正確な経度: \(keidoNow)"
+            print(edoNow)
+            print(keidoNow)
+        case .reducedAccuracy:
+            edo.text = "曖昧な緯度: \(edoNow)"
+            keido.text = "曖昧な経度: \(keidoNow)"
+        default:
+            print("def")
         }
     }
     
@@ -55,7 +71,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func alert() {
-        let alertTitle = "位置情報取得が許可されていません。"
+        let alertTitle = "位置情報取得が曖昧な情報となっています。"
         let alertMessage = "設定アプリの「プライバシー > 位置情報サービス」から変更してください。"
         let alert: UIAlertController = UIAlertController(
             title: alertTitle,
@@ -74,24 +90,37 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         present(alert, animated: true, completion: nil)
     }
     
-    /// 位置情報が更新された際、位置情報を格納する
-    /// - Parameters:
-    ///   - manager: ロケーションマネージャ
-    ///   - locations: 位置情報
+    // 位置情報が更新された際、位置情報を格納
+    //   - manager: ロケーションマネージャ
+    //   - locations: 位置情報
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations.first
         let latitude = location?.coordinate.latitude
         let longitude = location?.coordinate.longitude
-        // 位置情報を格納する
+        // 位置情報を格納
         edoNow = String(latitude!)
         keidoNow = String(longitude!)
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         let status = manager.authorizationStatus()
-        status == .notDetermined
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            print("フラグON")
+        case .notDetermined, .denied, .restricted:
+            print("OFF")
+        default:
+            print("特に必要ない")
+        }
+        switch manager.accuracyAuthorization {
+        case .fullAccuracy:
+            print("正確な位置情報")
+        case .reducedAccuracy:
+            print("曖昧な位置情報")
+            alert()
+        default:
+            print("デフォ")
+        }
     }
-    
-    
 }
 
