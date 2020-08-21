@@ -108,7 +108,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         case .authorizedAlways, .authorizedWhenInUse:
             print("フラグON")
         case .notDetermined, .denied, .restricted:
-            print("OFF")
+            print("フラグOFF")
         default:
             print("特に必要ない")
         }
