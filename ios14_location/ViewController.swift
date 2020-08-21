@@ -23,7 +23,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         setUpLocationM()
     }
-
+    
     @IBAction func getLocation(_ sender: Any) {
         let status = locManager.authorizationStatus()
         let manager = locManager.accuracyAuthorization
