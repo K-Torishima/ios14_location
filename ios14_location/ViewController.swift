@@ -25,7 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func getLocation(_ sender: Any) {
-        let status = locManager.authorizationStatus()
+        let status = CLLocationManager.authorizationStatus()
         let manager = locManager.accuracyAuthorization
         switch status {
         case .authorizedAlways,.authorizedWhenInUse:
@@ -62,7 +62,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         guard let locM = locManager else { return }
         locM.requestWhenInUseAuthorization()
         
-        let status = locManager.authorizationStatus()
+        let status = CLLocationManager.authorizationStatus()
         
         if status == .authorizedWhenInUse {
             locM.delegate = self
@@ -103,7 +103,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        let status = manager.authorizationStatus()
+        let status = CLLocationManager.authorizationStatus()
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             print("フラグON")
